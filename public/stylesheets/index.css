@@ -3,19 +3,19 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("background.jpg") no-repeat;
+    /*background: url("background.jpg") no-repeat;*/
     background-size: cover;
     background-position: center;
-  }
-  
-  header {
+}
+
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -26,22 +26,23 @@
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-  }
-  
-  .logo {
+}
+
+.logo {
     font-size: 2.1em;
     color: white;
-  }
-  
-  .navigation a {
+}
+
+.navigation a {
     position: relative;
     font-size: 1.3em;
     color: white;
     text-decoration: none;
     font-weight: 500;
     margin-left: 40px;
-  }
-  .navigation a::after {
+}
+
+.navigation a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -53,14 +54,14 @@
     transform-origin: right;
     transform: scaleX(0);
     transition: transform 0.5s;
-  }
-  
-  .navigation a:hover::after {
+}
+
+.navigation a:hover::after {
     transform-origin: left;
     transform: scaleX(1);
-  }
-  
-  .navigation .btnlogin-popup {
+}
+
+.navigation .btnlogin-popup {
     width: 130px;
     height: 50px;
     background: transparent;
@@ -73,21 +74,21 @@
     font-weight: 500;
     margin-left: 40px;
     transition: 0.5s;
-  }
-  
-  .navigation .btnlogin-popup:hover {
+}
+
+.navigation .btnlogin-popup:hover {
     background: white;
     color: #162938;
-  }
-  
-  * {
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-  }
-  
-  .wrapper {
+}
+
+.wrapper {
     position: relative;
     width: 420px;
     height: 440px;
@@ -98,47 +99,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform .3s ease,height 0.2s ease;
+    transition: transform .3s ease, height 0.2s ease;
     overflow: hidden;
     transform: scale(0);
-  }
-  
-  .wrapper.active-popup{
+}
+
+.wrapper.active-popup {
     transform: scale(1);
-  }
-  
-  .wrapper.active {
+}
+
+.wrapper.active {
     height: 460px;
-  }
-  
-  .wrapper h1 {
+}
+
+.wrapper h1 {
     font-size: 36px;
     text-align: center;
     color: black;
-  }
-  
-  .wrapper .login-box {
+}
+
+.wrapper .login-box {
     transition: transform 0.18s ease;
     transform: translateX(0);
-  }
-  
-  .wrapper.active .login-box {
+}
+
+.wrapper.active .login-box {
     transition: none;
     transform: translateX(-400px);
-  }
-  
-  .wrapper .registration-box {
+}
+
+.wrapper .registration-box {
     position: absolute;
     transition: none;
     transform: translateX(400px);
-  }
-  
-  .wrapper.active .registration-box {
+}
+
+.wrapper.active .registration-box {
     transition: transform 0.18s ease;
     transform: translateX(0);
-  }
-  
-  .wrapper .icon-close {
+}
+
+.wrapper .icon-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -153,9 +154,9 @@
     border-bottom-left-radius: 20px;
     cursor: pointer;
     z-index: 1;
-  }
-  
-  .wrapper .input-box {
+}
+
+.wrapper .input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -165,72 +166,70 @@
     border-radius: 10px;
     color: black;
     background-color: white;
-  }
-  
-  .wrapper .input-box:hover {
+}
+
+.wrapper .input-box:hover {
     /* opacity: 0.7; */
     border-radius: 100px;
-  }
-  
-  div > form > h1 {
+}
+
+div > form > h1 {
     margin-bottom: 30px;
-  }
-  
-  .input-box input {
+}
+
+.input-box input {
     width: 100%;
     height: 100%;
     background: transparent;
-    border: none;
     outline: none;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
     font-size: 20px;
     color: black;
     padding: 20px 45px 20px 20px;
-  }
-  
-  .input-box input::placeholder {
+}
+
+.input-box input::placeholder {
     color: black;
-  }
-  
-  .input-box i {
+}
+
+.input-box i {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-  }
-  
-  .wrapper .remember-forgot {
+}
+
+.wrapper .remember-forgot {
     display: flex;
     justify-content: space-between;
     font-size: 15px;
     margin: 30px 0;
     color: black;
-  }
-  
-  .remember-forgot label input {
+}
+
+.remember-forgot label input {
     accent-color: #fff;
     margin-right: 3px;
-  }
-  
-  .remember-forgot a {
+}
+
+.remember-forgot a {
     color: black;
     text-decoration: none;
-  }
-  
-  .remember-forgot a:hover {
+}
+
+.remember-forgot a:hover {
     text-decoration: underline;
     color: darkred;
-  }
-  
-  .wrapper .btn {
+}
+
+.wrapper .btn {
     width: 100%;
     height: 45px;
     background: darkblue;
     border: none;
     outline: none;
-    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 20px;
@@ -239,9 +238,9 @@
     /* border: 3px solid white; */
     border-radius: 10px;
     transition: ease-in-out 2s border-radius;
-  }
-  
-  .wrapper .btn:hover {
+}
+
+.wrapper .btn:hover {
     color: #fff;
     background-color: darkblue;
     opacity: 0.7;
@@ -249,23 +248,23 @@
     /* transform: scale(1.1); */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border: black;
-  }
-  
-  .wrapper .register-Link {
+}
+
+.wrapper .register-Link {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
     color: black;
-  }
-  
-  .register-Link p a {
+}
+
+.register-Link p a {
     color: black;
     text-decoration: none;
     font-weight: 600;
-  }
-  
-  .register-Link p a:hover {
+}
+
+.register-Link p a:hover {
     text-decoration: underline;
     color: darkred;
-  }
+}
   
