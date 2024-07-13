@@ -1,0 +1,15 @@
+:root {
+    --primary_color: #b1cbff;
+    --secondary_color: #c2cbe0;
+    --tertiary_color: #e1c0e5;
+    --error_color: #ffbab1;
+
+    --primary_container_color: #7491c7;
+    --secondary_container_color: #8891a5;
+    --tertiary_container_color: #a487a9;
+    --error_container_color: #ff5449;
+
+    --surface_color: #111318;
+    --surface_container_color: #282a2f;
+    --animation_duration: 500ms;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/stylesheets/constants.css"/>
+    <link rel="stylesheet" href="/stylesheets/signup_page.css"/>
+    <script src="/javascripts/signup_page.js">
+
+    </script>
+</head>
+<body>
+<div class="login-container">
+    <h1>Tinker Bolt</h1>
+    <h3>Sign-in page</h3>
+    <label for="user_email">
+        <input id="user_email" type="email" placeholder="Email"/>
+    </label>
+    <label for="user_password">
+        <input id="user_password" type="password" placeholder="Password">
+        <p>Example password:<br>
+            <br>
+            1). TinkeringHub@123<br>
+            2). Tinkeringhub#098<br>
+            3). Tinkering@Hub++098
+        </p>
+    </label>
+    <div class="checkbox-container">
+        <input type="checkbox" id="keep-signed-in">
+        <label for="keep-signed-in">Keep me signed in</label>
+    </div>
+    <button onclick="onSignInButton()">SIGN IN</button>
+    <p>OR</p>
+    <!--    <button class="google-button">-->
+    <!--        <img src="google-logo.png" alt="Google Logo"> Sign in with Google-->
+    <!--    </button>-->
+    <a href="#">Forgot Password?</a>
+</div>
+</body>
+</html>
