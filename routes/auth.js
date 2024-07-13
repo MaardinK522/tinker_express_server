@@ -2,28 +2,34 @@ const express = require('express');
 const router = express.Router();
 const DatabaseManager = require('../databases/databaseManager');
 /* GET home page. */
-router.get('/signup_page', function (req, res, next) {
+router.get('/signup_page', function (req, res) {
     res.render('signup_page');
 });
 
-router.post('/signup_creds', function (req, res, next) {
+router.post('/signup_creds', function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
     console.log(req.body)
     console.log(`Email: ${email}`);
     console.log(`Password: ${password}`);
+    const databaseManager = new DatabaseManager();
     if (validateEmail(email) && validatePassword(password)) {
-        new DatabaseManager().add_user_credentials(email, password).then(r => {
-            console.log(r);
-        });
-        res.status(200);
-        res.send(`home_page`);
+        databaseManager.checkUserExists(email, password).then((exists) => {
+            if (exists) {
+                res.status(208);
+                res.send(`User already exists`);
+            }
+            databaseManager.add_user_credentials(email, password).then(r => {
+                res.status(200);
+                res.send(`home_page`);
+                console.log(r);
+            });
+        })
     } else {
         res.status(404);
         res.send('Given user has invalid credential details.');
     }
 });
-
 
 
 function validateEmail(email) {

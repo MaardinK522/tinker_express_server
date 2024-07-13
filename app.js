@@ -10,7 +10,8 @@ const app = express();
 
 const DatabaseManager = require("./databases/databaseManager");
 
-new DatabaseManager().connectedToDB().then(result => console.log(result));
+// Triggering the database creation file.
+new DatabaseManager();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -31,7 +32,7 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((req, res, next, err) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};

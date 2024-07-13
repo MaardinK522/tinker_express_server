@@ -1,34 +1,3 @@
-// const DatabaseManager = (function () {
-//     let INSTANCE;
-//
-//     class DatabaseManager {
-//         constructor() {
-//             if (!INSTANCE) {
-//                 INSTANCE = this;
-//                 console.log('Instance is created');
-//             }
-//         }
-//
-//         // TODO: Add the user given from the request the DB.
-//         add_user(user) {
-//             console.log(`User is : ${user.name}`);
-//         }
-//     }
-//
-//     return {
-//         getInstance: function () {
-//             if (!INSTANCE) {
-//                 this.INSTANCE = new DatabaseManager();
-//                 console.log('Instance is returned');
-//                 return INSTANCE;
-//             }
-//             return INSTANCE;
-//         }
-//     }
-// })
-//
-// export {DatabaseManager};
-
 const sqlite3 = require("sqlite3");
 
 class DatabaseManager {
@@ -36,7 +5,7 @@ class DatabaseManager {
         if (!DatabaseManager.instance) {
             DatabaseManager.instance = this;
             sqlite3.verbose();
-            this.databaseConnection = null;
+            this.userCredentialDatabaseConnection = null;
             this.userTableName = 'users';
             this.connectedToDB().then(r => console.log(r));
         }
@@ -44,8 +13,8 @@ class DatabaseManager {
     }
 
     async connectedToDB() {
-        if (!this.databaseConnection) {
-            this.databaseConnection = await new Promise((resolve, reject) => {
+        if (!this.userCredentialDatabaseConnection) {
+            this.userCredentialDatabaseConnection = await new Promise((resolve, reject) => {
                 const connection = new sqlite3.Database('./user_credentials.db', (err) => {
                     if (err) {
                         console.error('Error connecting to database', err);
@@ -61,7 +30,7 @@ class DatabaseManager {
                 });
             });
         }
-        return this.databaseConnection;
+        return this.userCredentialDatabaseConnection;
     }
 
     // Creating the users in the database.
@@ -70,7 +39,7 @@ class DatabaseManager {
         const password = user.password;
         return new Promise((resolve, reject) => {
             const statement = `INSERT INTO ${this.userTableName} (username, password) VALUES (?, ?)`;
-            this.databaseConnection.prepare(statement, (err, query) => {
+            this.userCredentialDatabaseConnection.prepare(statement, (err, query) => {
                 if (err) {
                     console.error('Error preparing statement:', err);
                     reject(err);
@@ -94,7 +63,7 @@ class DatabaseManager {
     async checkUserExists(email) {
         return new Promise((resolve, reject) => {
             const statement = `SELECT 1 FROM ${this.userTableName} WHERE username = ${email}`;
-            this.databaseConnection.get(statement, [email], (err, row) => {
+            this.userCredentialDatabaseConnection.get(statement, [email], (err, row) => {
                 if (err) {
                     console.error('Error checking for existing user:', err);
                     reject(err);
@@ -109,7 +78,7 @@ class DatabaseManager {
     async removeUser(email) {
         return new Promise((resolve, reject) => {
             const statement = `DELETE FROM ${this.userTableName} WHERE username = ${email}`;
-            this.databaseConnection.run(statement, [email], (err) => {
+            this.userCredentialDatabaseConnection.run(statement, [email], (err) => {
                 if (err) {
                     console.error('Error deleting user:', err);
                     reject(err);
@@ -121,13 +90,5 @@ class DatabaseManager {
         });
     }
 }
-
-// // Usage:
-// const dbManager = new DatabaseManager(); // Singleton instance
-//
-// dbManager.connectedToDB()
-//   .then(() => dbManager.add_user_credentials({ email: 'user@example.com', password: 'hashed_password' }))
-//   .then(() => console.log('User added successfully'))
-//   .catch((err) => console.error('Error:', err));
 
 module.exports = DatabaseManager; // Optional: Export the class for testing purposes
